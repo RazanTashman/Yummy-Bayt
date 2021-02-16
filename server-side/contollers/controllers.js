@@ -64,6 +64,20 @@ module.exports = {
   },
 
 
+  action: (req, res) => {
+    var data = req.body
+    console.log("..........controller", data);
+
+    model.action(data, function (err, results) {
+     if (err) {
+       console.log("error in adding items controller", err);
+     }
+     console.log("success in adding items controller");
+     res.json(results);
+    });
+  },
+
+
 
 };
 

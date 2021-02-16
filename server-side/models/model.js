@@ -39,11 +39,19 @@ module.exports = {
   },
 
   getOrders: (callback) => {
-   
     var queryStr = " SELECT  orders.*, user.* FROM orders  INNER JOIN user ON  orders.userID = user.userId ";
     connection.query(queryStr, function (err, result) {
       callback(err, result);
       console.log("error", err);
     });
   },
+
+  action: (data,callback) => {
+    var queryStr = `UPDATE orders SET status = '${data.status}' WHERE  orderId = '${data.orderId}'`
+    connection.query(queryStr, function (err, result) {
+      callback(err, result);
+      console.log("result", result);
+    });
+  },
 };
+
