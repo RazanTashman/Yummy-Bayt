@@ -40,6 +40,31 @@ module.exports = {
       res.json(results);
      });
    },
+ 
+  //Adding items to the menu
+   addItems: (req, res) => {
+    var data = [req.body.productName, req.body.productPrice, req.body.description, req.body.category, req.body.image]
+    model.addItems(data, function (err, results) {
+     if (err) {
+       console.log("error in adding items controller", err);
+     }
+     console.log("success in adding items controller");
+     res.json(results);
+    });
+  },
+
+  getOrders: (req, res) => {
+    model.getOrders(function (err, results) {
+      if (err) {
+        console.log("error in get Orders controller", err);
+      }
+      console.log("success in get Orders controller");
+      res.json(results);
+    });
+  },
+
+
+
 };
 
 
